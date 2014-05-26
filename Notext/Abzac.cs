@@ -10,13 +10,20 @@ namespace bdb
 	{
 		static const string BEGIN = "=======";
 		//====================
-		int line;
+		int firstLine;
 		string content;
 		//=======================
 
-		public bool contains(IList<string> words)
+		public bool contains(IEnumerable<string> words)
 		{
-			return true;
+			int countMatched = words.Skip(1).Count(w => content.ToLower().Contains(w.ToLower()));
+			return (words.Count() == countMatched - 1);
+		}//function
+
+		public static Abzac create(IEnumerable<string> lines, int fromLine)
+		{
+			Abzac Ret = null;
+			return Ret;
 		}//function
 	}//class
 }//ns

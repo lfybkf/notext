@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,21 +15,33 @@ namespace bdb
 		string fileName;
 		string wordMain;
 		DateTime dtIndexed;
-		IEnumerable<Abzac> content = new List<Abzac>();
-
+		IEnumerable<Abzac> content;
 
 		//================
-		public IEnumerable<Abzac> findAll(IList<string> words)
+		public IEnumerable<Abzac> findAll(IEnumerable<string> words)
 		{
-			if (words.Count < 2)
+			if (words.Count() < 2)
 				return empty;
 
-			if (words[0] != wordMain || words[0] != wordAny)
+			if (words.ElementAt(0) != wordMain || words.ElementAt(0) != wordAny)
 				return empty;
 
 			return content.Where(a => a.contains(words));
 
 		}//function
 
+		public void init(string fileName)
+		{
+			this.fileName = fileName;
+			this.dtIndexed = File.GetLastAccessTime(fileName);
+			this.wordMain = Path.GetFileNameWithoutExtension(fileName).ToLower();
+			string[] lines = File.ReadAllLines(fileName, Encoding.GetEncoding(1251));
+			content = new List<Abzac>();
+			
+			if (lines.Count() < 1)
+				return;
+
+			;
+		}//function
 	}//class
 }//ns
