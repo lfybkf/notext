@@ -14,12 +14,16 @@ namespace bdb
 		public int lineLast { get; private set; }
 		public int size { get { return lineLast - lineFirst + 1; } }
 		string content = string.Empty;
+		//public bool isEmpty { get { return (content == string.Empty); } }
 		//=======================
 
 		public bool contains(IEnumerable<string> words)
 		{
-			int countMatched = words.Skip(1).Count(w => content.ToLower().Contains(w.ToLower()));
-			return (words.Count() == countMatched - 1);
+			IEnumerable<string> wordsToSearch = words.Skip(1); //first word poins to Paket
+			Func<string, bool> wordIsHere = (w) => { return content.ToLower().Contains(w.ToLower()); };
+			int countMatched = wordsToSearch.Count(w => wordIsHere(w));
+			bool isAllWordsHere = (wordsToSearch.Count() == countMatched);
+			return isAllWordsHere;
 		}//function
 
 		public static Abzac create(IEnumerable<string> lines, int lineFrom)
@@ -54,7 +58,19 @@ namespace bdb
 			if (Ret.lineLast == 0) //didnt find delim
 				Ret.lineLast = linesCount - 1; //its last abzac in text
 
+			Ret.load(lines);
+
 			return Ret;
+		}//function
+
+		private void load(IEnumerable<string> lines)
+		{
+			StringBuilder sb = new StringBuilder();
+			for (int i = lineFirst; i <= lineLast; i++)
+			{
+				sb.AppendLine(lines.ElementAt(i));
+			}
+			content = sb.ToString();
 		}//function
 	}//class
 }//ns

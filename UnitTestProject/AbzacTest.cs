@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace bdb
@@ -6,6 +8,7 @@ namespace bdb
 	[TestClass]
 	public class AbzacTest
 	{
+		static char[] delim = { ' ' };
 		static string[] lines = { 
 															"asd"
 															, "something1"
@@ -32,14 +35,25 @@ namespace bdb
 			//Assert.IsTrue(a2.lineFirst == 5);
 			//Assert.IsTrue(a2.lineLast == 7);
 			Assert.IsTrue(a2.size == 3);
+			Assert.IsTrue(a2.contains("* any 3".Split(delim)));
 		}
 
 		[TestMethod]
 		public void testCreateAll()
 		{
-			Paket p = new Paket();
-			p.init(lines);
+			IEnumerable<Abzac> aa;
+			Paket p = new Paket(Paket.fileFake);
+			p.load(lines);
 			Assert.IsTrue(p.size == 3);
+
+			aa = p.findAll("* 3 1".Split(delim));
+			Assert.IsTrue(aa.Count() == 2);
+
+			aa = p.findAll("* BUBU".Split(delim));
+			Assert.IsTrue(aa.Count() == 0);
+
+			aa = p.findAll("* 2".Split(delim));
+			Assert.IsTrue(aa.Count() == 3);
 		}
 	}
 }
