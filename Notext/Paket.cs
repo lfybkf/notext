@@ -11,8 +11,10 @@ namespace bdb
 	{
 		public static readonly string wordAny = "*";
 		public static readonly string fileFake = "FAKE";
+		public static readonly string mask = "*.txt";
 		static readonly IEnumerable<Abzac> empty = new Abzac[0];
 		static readonly Encoding encoding = Encoding.GetEncoding(1251);
+		static readonly string BasePath = Environment.CurrentDirectory;
 		//====================
 		string fileName;
 		string wordMain = string.Empty;
@@ -22,6 +24,11 @@ namespace bdb
 		public int size { get { return content != null ? content.Count() : 0; } }
 		//================
 
+
+		public static IEnumerable<string> getItems()
+		{
+			return Directory.EnumerateFiles(BasePath, mask).Select(s => Path.GetFileNameWithoutExtension(s));
+		}//function
 
 		public IEnumerable<Abzac> findAll(IEnumerable<string> words)
 		{

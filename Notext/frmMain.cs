@@ -16,5 +16,23 @@ namespace bdb
 		{
 			InitializeComponent();
 		}
-	}
+
+		private void frmMain_Load(object sender, EventArgs e)
+		{
+			;
+		}
+
+		private void ctlFind_TextChanged(object sender, EventArgs e)
+		{
+			;
+		}
+
+		private void ctlFind_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				;
+			}//if
+		}
+	}//class
 }
