@@ -8,18 +8,18 @@ namespace bdb
 {
 	public class Abzac
 	{
-		static readonly string DELIM = "=====";
+		public static readonly string DELIM = "=====";
+		public static readonly int NO_LINE = -1;
 		//====================
 		public int lineFirst {get; private set;}
 		public int lineLast { get; private set; }
 		public int size { get { return lineLast - lineFirst + 1; } }
-		string content = string.Empty;
-		//public bool isEmpty { get { return (content == string.Empty); } }
+		public string content { get; private set; }
 		//=======================
 
 		public bool contains(IEnumerable<string> words)
 		{
-			IEnumerable<string> wordsToSearch = words.Skip(1); //first word poins to Paket
+			IEnumerable<string> wordsToSearch = words.Skip(1); //first word points to Paket
 			Func<string, bool> wordIsHere = (w) => { return content.ToLower().Contains(w.ToLower()); };
 			int countMatched = wordsToSearch.Count(w => wordIsHere(w));
 			bool isAllWordsHere = (wordsToSearch.Count() == countMatched);
@@ -38,16 +38,16 @@ namespace bdb
 			Abzac Ret = new Abzac();
 			String s;
 			Ret.lineFirst = lineFrom;
-			Ret.lineLast = 0;
+			Ret.lineLast = NO_LINE;
 			for (int i = lineFrom; i < linesCount; i++)
 			{
 				s = lines.ElementAt(i);
 
-				if (s.StartsWith(DELIM))
+				if (s.StartsWith(DELIM))//we find DELIM!
 				{
-					if (i == lineFrom)//is it first line?
+					if (i == lineFrom)//is it on first line?
 						Ret.lineFirst++;//abzac starts with next line
-					else //end of abzac
+					else //deilm here is marks end of abzac
 					{
 						Ret.lineLast = i - 1;//abzac ends befor delim
 						break;
@@ -55,7 +55,7 @@ namespace bdb
 				}//if
 			}//for
 
-			if (Ret.lineLast == 0) //didnt find delim
+			if (Ret.lineLast == NO_LINE) //didnt find delim
 				Ret.lineLast = linesCount - 1; //its last abzac in text
 
 			Ret.load(lines);
@@ -69,7 +69,7 @@ namespace bdb
 			for (int i = lineFirst; i <= lineLast; i++)
 			{
 				sb.AppendLine(lines.ElementAt(i));
-			}
+			}//for
 			content = sb.ToString();
 		}//function
 	}//class

@@ -29,13 +29,15 @@
 		private void InitializeComponent()
 		{
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.ctlFind = new System.Windows.Forms.TextBox();
 			this.ctlPakets = new System.Windows.Forms.ListBox();
 			this.panA = new System.Windows.Forms.Panel();
+			this.ctlFind = new System.Windows.Forms.TextBox();
+			this.ctlResult = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.panA.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -53,10 +55,32 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.panA);
 			this.splitContainer1.Panel2.Controls.Add(this.ctlFind);
-			this.splitContainer1.Size = new System.Drawing.Size(921, 447);
-			this.splitContainer1.SplitterDistance = 190;
+			this.splitContainer1.Size = new System.Drawing.Size(1269, 447);
+			this.splitContainer1.SplitterDistance = 215;
 			this.splitContainer1.SplitterWidth = 6;
 			this.splitContainer1.TabIndex = 0;
+			// 
+			// ctlPakets
+			// 
+			this.ctlPakets.BackColor = System.Drawing.Color.PeachPuff;
+			this.ctlPakets.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ctlPakets.Enabled = false;
+			this.ctlPakets.FormattingEnabled = true;
+			this.ctlPakets.ItemHeight = 25;
+			this.ctlPakets.Location = new System.Drawing.Point(0, 0);
+			this.ctlPakets.Name = "ctlPakets";
+			this.ctlPakets.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.ctlPakets.Size = new System.Drawing.Size(215, 447);
+			this.ctlPakets.TabIndex = 0;
+			// 
+			// panA
+			// 
+			this.panA.Controls.Add(this.ctlResult);
+			this.panA.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panA.Location = new System.Drawing.Point(0, 30);
+			this.panA.Name = "panA";
+			this.panA.Size = new System.Drawing.Size(1048, 417);
+			this.panA.TabIndex = 1;
 			// 
 			// ctlFind
 			// 
@@ -65,47 +89,43 @@
 			this.ctlFind.Location = new System.Drawing.Point(0, 0);
 			this.ctlFind.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ctlFind.Name = "ctlFind";
-			this.ctlFind.Size = new System.Drawing.Size(725, 30);
+			this.ctlFind.Size = new System.Drawing.Size(1048, 30);
 			this.ctlFind.TabIndex = 0;
 			this.ctlFind.TextChanged += new System.EventHandler(this.ctlFind_TextChanged);
 			this.ctlFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ctlFind_KeyUp);
 			// 
-			// ctlPakets
+			// ctlResult
 			// 
-			this.ctlPakets.BackColor = System.Drawing.Color.PeachPuff;
-			this.ctlPakets.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ctlPakets.FormattingEnabled = true;
-			this.ctlPakets.ItemHeight = 25;
-			this.ctlPakets.Location = new System.Drawing.Point(0, 0);
-			this.ctlPakets.Name = "ctlPakets";
-			this.ctlPakets.Size = new System.Drawing.Size(190, 447);
-			this.ctlPakets.TabIndex = 0;
-			// 
-			// panA
-			// 
-			this.panA.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panA.Location = new System.Drawing.Point(0, 30);
-			this.panA.Name = "panA";
-			this.panA.Size = new System.Drawing.Size(725, 417);
-			this.panA.TabIndex = 1;
+			this.ctlResult.BackColor = System.Drawing.Color.Bisque;
+			this.ctlResult.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ctlResult.Location = new System.Drawing.Point(0, 0);
+			this.ctlResult.Multiline = true;
+			this.ctlResult.Name = "ctlResult";
+			this.ctlResult.ReadOnly = true;
+			this.ctlResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.ctlResult.Size = new System.Drawing.Size(1048, 417);
+			this.ctlResult.TabIndex = 0;
+			this.ctlResult.WordWrap = false;
 			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Tan;
-			this.ClientSize = new System.Drawing.Size(921, 447);
+			this.ClientSize = new System.Drawing.Size(1269, 447);
 			this.Controls.Add(this.splitContainer1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "frmMain";
-			this.Text = "Form1";
+			this.Text = "Notext";
 			this.Load += new System.EventHandler(this.frmMain_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			this.splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.panA.ResumeLayout(false);
+			this.panA.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -116,6 +136,7 @@
 		private System.Windows.Forms.TextBox ctlFind;
 		private System.Windows.Forms.ListBox ctlPakets;
 		private System.Windows.Forms.Panel panA;
+		private System.Windows.Forms.TextBox ctlResult;
 	}
 }
 

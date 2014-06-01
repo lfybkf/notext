@@ -9,6 +9,8 @@ namespace bdb
 {
 	public class Paket
 	{
+		public static readonly string delimS = " ";
+		public static readonly char[] delim = delimS.ToArray();
 		public static readonly string wordAny = "*";
 		public static readonly string fileFake = "FAKE";
 		public static readonly string mask = "*.txt";
@@ -17,17 +19,22 @@ namespace bdb
 		static readonly string BasePath = Environment.CurrentDirectory;
 		//====================
 		string fileName;
-		string wordMain = string.Empty;
+		public string name {get; private set;}
 		DateTime dtIndexed;
 		ICollection<Abzac> content;
 		//================
 		public int size { get { return content != null ? content.Count() : 0; } }
 		//================
 
-
-		public static IEnumerable<string> getItems()
+		public bool isWordMine(string word)
 		{
-			return Directory.EnumerateFiles(BasePath, mask).Select(s => Path.GetFileNameWithoutExtension(s));
+			return name.StartsWith(word) || word == wordAny;
+		}//function
+
+		public static IEnumerable<Paket> createItems()
+		{
+			return Directory.EnumerateFiles(BasePath, mask)
+				.Select(s => new Paket(s));
 		}//function
 
 		public IEnumerable<Abzac> findAll(IEnumerable<string> words)
@@ -37,7 +44,7 @@ namespace bdb
 
 			string wordFirst = words.ElementAt(0);
 			//is it for me exactly or for all?
-			if (wordMain.StartsWith(wordFirst) == false && wordFirst != wordAny) 
+			if (isWordMine(wordFirst) == false) 
 				return empty;
 
 			if (isActual == false)
@@ -45,6 +52,11 @@ namespace bdb
 
 			return content.Where(a => a.contains(words));
 
+		}//function
+
+		public override string ToString()
+		{
+			return name;
 		}//function
 
 		public bool isActual
@@ -55,7 +67,7 @@ namespace bdb
 					return true;
 
 				DateTime dt = File.GetLastAccessTime(fileName);
-				return (dt == dtIndexed);
+				return (dt == dtIndexed && content != null);
 			}
 		}//function
 
@@ -65,7 +77,7 @@ namespace bdb
 			if (fileName == fileFake)
 				return;
 
-			this.wordMain = Path.GetFileNameWithoutExtension(fileName).ToLower();
+			this.name = Path.GetFileNameWithoutExtension(fileName).ToLower();
 			this.dtIndexed = File.GetLastAccessTime(fileName);
 		}//function
 
