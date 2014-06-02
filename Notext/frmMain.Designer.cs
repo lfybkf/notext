@@ -31,8 +31,8 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.ctlPakets = new System.Windows.Forms.ListBox();
 			this.panA = new System.Windows.Forms.Panel();
-			this.ctlFind = new System.Windows.Forms.TextBox();
 			this.ctlResult = new System.Windows.Forms.TextBox();
+			this.ctlFind = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -56,7 +56,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.panA);
 			this.splitContainer1.Panel2.Controls.Add(this.ctlFind);
 			this.splitContainer1.Size = new System.Drawing.Size(1269, 447);
-			this.splitContainer1.SplitterDistance = 215;
+			this.splitContainer1.SplitterDistance = 153;
 			this.splitContainer1.SplitterWidth = 6;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -70,7 +70,7 @@
 			this.ctlPakets.Location = new System.Drawing.Point(0, 0);
 			this.ctlPakets.Name = "ctlPakets";
 			this.ctlPakets.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-			this.ctlPakets.Size = new System.Drawing.Size(215, 447);
+			this.ctlPakets.Size = new System.Drawing.Size(153, 447);
 			this.ctlPakets.TabIndex = 0;
 			// 
 			// panA
@@ -79,20 +79,8 @@
 			this.panA.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panA.Location = new System.Drawing.Point(0, 30);
 			this.panA.Name = "panA";
-			this.panA.Size = new System.Drawing.Size(1048, 417);
+			this.panA.Size = new System.Drawing.Size(1110, 417);
 			this.panA.TabIndex = 1;
-			// 
-			// ctlFind
-			// 
-			this.ctlFind.BackColor = System.Drawing.Color.PeachPuff;
-			this.ctlFind.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ctlFind.Location = new System.Drawing.Point(0, 0);
-			this.ctlFind.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.ctlFind.Name = "ctlFind";
-			this.ctlFind.Size = new System.Drawing.Size(1048, 30);
-			this.ctlFind.TabIndex = 0;
-			this.ctlFind.TextChanged += new System.EventHandler(this.ctlFind_TextChanged);
-			this.ctlFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ctlFind_KeyUp);
 			// 
 			// ctlResult
 			// 
@@ -103,9 +91,20 @@
 			this.ctlResult.Name = "ctlResult";
 			this.ctlResult.ReadOnly = true;
 			this.ctlResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.ctlResult.Size = new System.Drawing.Size(1048, 417);
+			this.ctlResult.Size = new System.Drawing.Size(1110, 417);
 			this.ctlResult.TabIndex = 0;
-			this.ctlResult.WordWrap = false;
+			// 
+			// ctlFind
+			// 
+			this.ctlFind.BackColor = System.Drawing.Color.PeachPuff;
+			this.ctlFind.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ctlFind.Location = new System.Drawing.Point(0, 0);
+			this.ctlFind.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.ctlFind.Name = "ctlFind";
+			this.ctlFind.Size = new System.Drawing.Size(1110, 30);
+			this.ctlFind.TabIndex = 0;
+			this.ctlFind.TextChanged += new System.EventHandler(this.ctlFind_TextChanged);
+			this.ctlFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ctlFind_KeyUp);
 			// 
 			// frmMain
 			// 
