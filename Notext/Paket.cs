@@ -16,6 +16,7 @@ namespace bdb
 		static readonly IEnumerable<Abzac> empty = new Abzac[0];
 		static readonly Encoding encoding = Encoding.GetEncoding(1251);
 		static readonly string BasePath = Environment.CurrentDirectory;
+		static readonly string cmdEdit = ".edit";
 		//====================
 		string fileName;
 		public string name {get; private set;}
@@ -46,6 +47,17 @@ namespace bdb
 			if (isWordMine(wordFirst) == false) 
 				return empty;
 
+			#region cmd
+			if (wordFirst != wordAny) //cmd only for one - me
+			{ 
+				if (words.ElementAt(1) == cmdEdit)
+				{
+					System.Diagnostics.Process.Start(fileName);
+					return empty;
+				}//if
+			}//if
+			#endregion
+
 			if (isActual == false)
 				load();
 
@@ -62,7 +74,7 @@ namespace bdb
 		{
 			get 
 			{
-				DateTime dt = File.GetLastAccessTime(fileName);
+				DateTime dt = File.GetLastWriteTime(fileName);
 				return (dt == dtIndexed && content != null);
 			}
 		}//function
@@ -71,7 +83,7 @@ namespace bdb
 		{
 			this.fileName = fileName;
 			this.name = Path.GetFileNameWithoutExtension(fileName).ToLower();
-			this.dtIndexed = File.GetLastAccessTime(fileName);
+			this.dtIndexed = File.GetLastWriteTime(fileName);
 		}//function
 
 		public void load()

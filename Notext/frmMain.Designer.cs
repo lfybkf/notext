@@ -92,7 +92,7 @@
 			this.ctlResult.ReadOnly = true;
 			this.ctlResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.ctlResult.Size = new System.Drawing.Size(1110, 417);
-			this.ctlResult.TabIndex = 0;
+			this.ctlResult.TabIndex = 1;
 			// 
 			// ctlFind
 			// 

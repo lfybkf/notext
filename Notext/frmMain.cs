@@ -22,7 +22,9 @@ namespace bdb
 
 		private void frmMain_Load(object sender, EventArgs e)
 		{
+			this.Icon = Properties.Resources.notext;
 			ctlPakets.Items.AddRange(Paket.createItems().ToArray());
+			ctlFind.Select();
 		}
 
 		private void ctlFind_TextChanged(object sender, EventArgs e)
