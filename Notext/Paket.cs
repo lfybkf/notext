@@ -12,7 +12,6 @@ namespace bdb
 		public static readonly string delimS = " ";
 		public static readonly char[] delim = delimS.ToArray();
 		public static readonly string wordAny = "*";
-		public static readonly string fileFake = "FAKE";
 		public static readonly string mask = "*.txt";
 		static readonly IEnumerable<Abzac> empty = new Abzac[0];
 		static readonly Encoding encoding = Encoding.GetEncoding(1251);
@@ -63,9 +62,6 @@ namespace bdb
 		{
 			get 
 			{
-				if (fileName == fileFake)
-					return true;
-
 				DateTime dt = File.GetLastAccessTime(fileName);
 				return (dt == dtIndexed && content != null);
 			}
@@ -74,24 +70,13 @@ namespace bdb
 		public Paket(string fileName)
 		{
 			this.fileName = fileName;
-			if (fileName == fileFake)
-				return;
-
 			this.name = Path.GetFileNameWithoutExtension(fileName).ToLower();
 			this.dtIndexed = File.GetLastAccessTime(fileName);
 		}//function
 
 		public void load()
 		{
-			if (fileName == fileFake)
-				return;
-
 			string[] lines = File.ReadAllLines(fileName, encoding);
-			load(lines);			
-		}//function
-
-		public void load(IEnumerable<string> lines)
-		{
 			if (lines.Count() < 1)
 				return;
 
@@ -106,7 +91,7 @@ namespace bdb
 					lineFrom = a.lineLast + 1;
 					content.Add(a);
 				}//if
-				
+
 			} while (a != null);
 		}//function
 	}//class
