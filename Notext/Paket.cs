@@ -16,7 +16,8 @@ namespace bdb
 		static readonly IEnumerable<Abzac> empty = new Abzac[0];
 		static readonly Encoding encoding = Encoding.GetEncoding(1251);
 		static readonly string BasePath = Environment.CurrentDirectory;
-		static readonly string cmdEdit = ".edit";
+		static readonly string cmdEdit = ".ed";
+		static readonly string cmdEditR = ".ред";
 		//====================
 		string fileName;
 		public string name {get; private set;}
@@ -49,8 +50,9 @@ namespace bdb
 
 			#region cmd
 			if (wordFirst != wordAny) //cmd only for one - me
-			{ 
-				if (words.ElementAt(1) == cmdEdit)
+			{
+				string mayBeCmd = words.ElementAt(1);
+				if (mayBeCmd == cmdEdit || mayBeCmd == cmdEditR)
 				{
 					System.Diagnostics.Process.Start(fileName);
 					return empty;

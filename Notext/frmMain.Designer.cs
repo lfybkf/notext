@@ -72,6 +72,7 @@
 			this.ctlPakets.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
 			this.ctlPakets.Size = new System.Drawing.Size(153, 447);
 			this.ctlPakets.TabIndex = 0;
+			this.ctlPakets.TabStop = false;
 			// 
 			// panA
 			// 
