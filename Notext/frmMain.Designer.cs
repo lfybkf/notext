@@ -32,7 +32,7 @@
 			this.ctlPakets = new System.Windows.Forms.ListBox();
 			this.panA = new System.Windows.Forms.Panel();
 			this.ctlResult = new System.Windows.Forms.TextBox();
-			this.ctlFind = new System.Windows.Forms.TextBox();
+			this.ctlFind = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -54,11 +54,11 @@
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.panA);
-			this.splitContainer1.Panel2.Controls.Add(this.ctlFind);
 			this.splitContainer1.Size = new System.Drawing.Size(1269, 447);
 			this.splitContainer1.SplitterDistance = 153;
 			this.splitContainer1.SplitterWidth = 6;
 			this.splitContainer1.TabIndex = 0;
+			this.splitContainer1.TabStop = false;
 			// 
 			// ctlPakets
 			// 
@@ -77,32 +77,34 @@
 			// panA
 			// 
 			this.panA.Controls.Add(this.ctlResult);
+			this.panA.Controls.Add(this.ctlFind);
 			this.panA.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panA.Location = new System.Drawing.Point(0, 30);
+			this.panA.Location = new System.Drawing.Point(0, 0);
 			this.panA.Name = "panA";
-			this.panA.Size = new System.Drawing.Size(1110, 417);
+			this.panA.Size = new System.Drawing.Size(1110, 447);
 			this.panA.TabIndex = 1;
 			// 
 			// ctlResult
 			// 
 			this.ctlResult.BackColor = System.Drawing.Color.Bisque;
 			this.ctlResult.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ctlResult.Location = new System.Drawing.Point(0, 0);
+			this.ctlResult.Location = new System.Drawing.Point(0, 33);
 			this.ctlResult.Multiline = true;
 			this.ctlResult.Name = "ctlResult";
 			this.ctlResult.ReadOnly = true;
 			this.ctlResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.ctlResult.Size = new System.Drawing.Size(1110, 417);
+			this.ctlResult.Size = new System.Drawing.Size(1110, 414);
 			this.ctlResult.TabIndex = 1;
 			// 
 			// ctlFind
 			// 
-			this.ctlFind.BackColor = System.Drawing.Color.PeachPuff;
+			this.ctlFind.BackColor = System.Drawing.Color.Tan;
 			this.ctlFind.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ctlFind.FormattingEnabled = true;
 			this.ctlFind.Location = new System.Drawing.Point(0, 0);
-			this.ctlFind.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ctlFind.Name = "ctlFind";
-			this.ctlFind.Size = new System.Drawing.Size(1110, 30);
+			this.ctlFind.Size = new System.Drawing.Size(1110, 33);
+			this.ctlFind.Sorted = true;
 			this.ctlFind.TabIndex = 0;
 			this.ctlFind.TextChanged += new System.EventHandler(this.ctlFind_TextChanged);
 			this.ctlFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ctlFind_KeyUp);
@@ -121,7 +123,6 @@
 			this.Load += new System.EventHandler(this.frmMain_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
-			this.splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
 			this.panA.ResumeLayout(false);
@@ -133,10 +134,10 @@
 		#endregion
 
 		private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.TextBox ctlFind;
 		private System.Windows.Forms.ListBox ctlPakets;
 		private System.Windows.Forms.Panel panA;
 		private System.Windows.Forms.TextBox ctlResult;
+		private System.Windows.Forms.ComboBox ctlFind;
 	}
 }
 

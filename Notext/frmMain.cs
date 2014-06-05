@@ -49,6 +49,9 @@ namespace bdb
 		{
 			if (e.KeyCode == Keys.Enter)
 			{
+				if (ctlFind.FindStringExact(ctlFind.Text) < 0)
+					ctlFind.Items.Add(ctlFind.Text);
+				
 				doFind();
 			}//if
 		}//function
