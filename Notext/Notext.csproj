@@ -86,7 +86,9 @@
   <ItemGroup>
     <Content Include="notext.ico" />
     <Content Include="notextApp.ico" />
-    <None Include="Resources\mainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
